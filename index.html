@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World | My Portefeulje</title>
+    <style>
+        /* CSS Stileerwerk */
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #cbd5e1;
+            --accent-color: #10b981; /* Emerald groen vir die 'developer' gevoel */
+            --card-bg: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace; /* Gee dit 'n kode-voorkoms */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            padding: 20px 0;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Hero Afdeling */
+        .hero {
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .typing-text {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            border-right: 2px solid var(--accent-color);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+        }
+
+        /* Projekte Afdeling */
+        .projects-section {
+            margin-bottom: 60px;
+        }
+
+        .projects-section h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        /* Knoppies en Interaksie */
+        .btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 15px;
+            display: inline-block;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Animasies */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-color); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">&lt;Hello World /&gt;</div>
+        <button class="btn" id="themeBtn">Verander Tema</button>
+    </header>
+
+    <main>
+        <!-- Hero Element -->
+        <section class="hero">
+            <h1>console.log("Ek is 'n Ontwikkelaar");</h1>
+            <div class="typing-text" id="dynamicText">Welkom by my digitale spasie.</div>
+        </section>
+
+        <!-- Projekte Element -->
+        <section class="projects-section">
+            <h2>// My Projekte</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Projek Een</h3>
+                    <p>'n Pragtige e-handel webwerf gebou met moderne tegnologie.</p>
+                    <button class="btn alert-btn" data-project="Projek Een">Sien Meer</button>
+                </div>
+                <div class="card">
+                    <h3>Projek Twee</h3>
+                    <p>'n Toepassing wat intydse weervoorspellings wys.</p>
+                    <button class="btn alert-btn" data-project="Projek Twee">Sien Meer</button>
+                </div>
+                <div class="card">
+                    <h3>Projek Drie</h3>
+                    <p>Hierdie presiese portefeulje-uitleg waarin jy nou lees.</p>
+                    <button class="btn alert-btn" data-project="Projek Drie">Sien Meer</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript Interaksie -->
+    <script>
+        // 1. Wys 'n boodskap wanneer daar op 'n projek geklik word
+        const projectButtons = document.querySelectorAll('.alert-btn');
+        
+        projectButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const projectName = this.getAttribute('data-project');
+                alert(`Jy het geklik op: ${projectName}! Hier kan jy in die toekoms 'n skakel na jou kode of webtuiste plaas.`);
+            });
+        });
+
+        // 2. "Verander Tema" knoppie funksionaliteit (Skakel tussen Donker en Lig)
+        const themeBtn = document.getElementById('themeBtn');
+        let isDarkTheme = true;
+
+        themeBtn.addEventListener('click', function() {
+            if (isDarkTheme) {
+                // Verander na ligte tema
+                document.documentElement.style.setProperty('--bg-color', '#f8fafc');
+                document.documentElement.style.setProperty('--text-color', '#334155');
+                document.documentElement.style.setProperty('--card-bg', '#ffffff');
+                themeBtn.textContent = "Donker Tema";
+                isDarkTheme = false;
+            } else {
+                // Verander terug na donker tema
+                document.documentElement.style.setProperty('--bg-color', '#0f172a');
+                document.documentElement.style.setProperty('--text-color', '#cbd5e1');
+                document.documentElement.style.setProperty('--card-bg', '#1e293b');
+                themeBtn.textContent = "Verander Tema";
+                isDarkTheme = true;
+            }
+        });
+    </script>
+
+</body>
+</html>
+
