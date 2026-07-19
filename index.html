@@ -1,2 +1,52 @@
-<!DOCTYPE html><html lang="af"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hallo Wêreld | My Portefeulje</title><style>:root{--bg-color:#0f172a;--text-color:#cbd5e1;--accent-color:#10b981;--card-bg:#1e293b}*{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',Courier,monospace}body{background-color:var(--bg-color);color:var(--text-color);line-height:1.6;padding:20px}header{max-width:900px;margin:0 auto 50px auto;padding:20px 0;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:700;color:var(--accent-color);font-size:1.2rem}main{max-width:900px;margin:0 auto}.hero{margin-bottom:60px}.hero h1{font-size:2.5rem;color:#fff;margin-bottom:10px}.typing-text{color:var(--accent-color);font-size:1.5rem;border-right:2px solid var(--accent-color);white-space:nowrap;overflow:hidden;display:inline-block;width:0;animation:typing 3s steps(30,end) forwards,blink .75s step-end infinite}.projects-section{margin-bottom:60px}.projects-section h2{color:#fff;margin-bottom:20px;border-left:4px solid var(--accent-color);padding-left:10px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}.card{background-color:var(--card-bg);padding:20px;border-radius:8px;border:1px solid #334155;transition:transform .2s}.card:hover{transform:translateY(-5px);border-color:var(--accent-color)}.card h3{color:#fff;margin-bottom:10px}.btn{background-color:transparent;color:var(--accent-color);border:1px solid var(--accent-color);padding:10px 20px;cursor:pointer;font-weight:700;border-radius:4px;margin-top:15px;display:inline-block;text-decoration:none;transition:.3s}.btn:hover{background-color:var(--accent-color);color:var(--bg-color)}@keyframes typing{from{width:0}to{width:100%}}@keyframes blink{from,to{border-color:transparent}50%{border-color:var(--accent-color)}}</style></head><body><header><div class="logo">&lt;Hallo Wêreld/&gt;</div><button class="btn" id="themeBtn">Verander Tema</button></header><main><section class="hero"><h1>console.log("Ek is 'n Sagteware Ontwikkelaar");</h1><div class="typing-text" id="dynamicText">Welkom by my digitale spasie.</div></section><section class="projects-section"><h2>My Projekte</h2><div class="grid"><div class="card"><h3>Projek Een</h3><p>'n Pragtige e-handel webwerf gebou met moderne tegnologie.</p><button class="btn alert-btn" data-project="Projek Een">Sien Meer</button></div><div class="card"><h3>Projek Twee</h3><p>'n Toepassing wat intydse weervoorspellings wys.</p><button class="btn alert-btn" data-project="Projek Twee">Sien Meer</button></div><div class="card"><h3>Projek Drie</h3><p>Hierdie presiese portefeulje-uitleg waarin jy nou lees.</p><button class="btn alert-btn" data-project="Projek Drie">Sien Meer</button></div></div></section></main><script>const projectButtons=document.querySelectorAll(".alert-btn");projectButtons.forEach(e=>{e.addEventListener("click",function(){const e=this.getAttribute("data-project");alert(`Jy het geklik op: ${e}! Hier kan jy in die toekoms 'n skakel na jou kode of webtuiste plaas.`)})});const themeBtn=document.getElementById("themeBtn");let isDarkTheme=!0;themeBtn.addEventListener("click",function(){isDarkTheme?(document.documentElement.style.setProperty("--bg-color","#f8fafc"),document.documentElement.style.setProperty("--text-color","#334155"),document.documentElement.style.setProperty("--card-bg","#ffffff"),themeBtn.textContent="Donker Tema",isDarkTheme=!1):(document.documentElement.style.setProperty("--bg-color","#0f172a"),document.documentElement.style.setProperty("--text-color","#cbd5e1"),document.documentElement.style.setProperty("--card-bg","#1e293b"),themeBtn.textContent="Verander Tema",isDarkTheme=!0)});</script></body></html>
-
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>otvnvs / portfolio</title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="site-title"><span>@</span>otvnvs</div>
+        <div class="header-links">
+          <a
+            class="gh-link"
+            href="https://otvnvs.github.io/cv/"
+            target="_blank"
+            rel="noopener"
+            >cv ↗</a
+          >
+          <a
+            class="gh-link"
+            href="https://github.com/otvnvs"
+            target="_blank"
+            rel="noopener"
+            >github ↗</a
+          >
+        </div>
+      </header>
+      <h1>Work &<br /><em>Projects</em></h1>
+      <div class="controls">
+        <p class="subtitle" id="subtitle">// initializing...</p>
+        <input
+          type="text"
+          id="search"
+          placeholder="search projects / topics..."
+        />
+        <div id="filters">
+          <button class="filter-btn active" data-filter="all">all</button>
+        </div>
+      </div>
+      <ul id="projects">
+        <li class="state">Loading...</li>
+      </ul>
+      <footer>
+        <span id="count"></span>
+        <span>built with github api</span>
+      </footer>
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
